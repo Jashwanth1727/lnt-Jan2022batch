@@ -40,7 +40,7 @@ C. Working with JOIN operations
 13. Display a unique list of names of the shipping companies that have ever supplied shipments to a customer 'Franchi S.p.A.'
 
 D. Working with sub queries
-Write a query to display the product name, unit price and quantity per unit of all products that belong to the same category as that of "Chai". Exclude "Chai" in the result.
+1.Write a query to display the product name, unit price and quantity per unit of all products that belong to the same category as that of "Chai". Exclude "Chai" in the result.
 2. Create a query to display product id, product name, unit price of all products that are costlier than the average price. Sort the result in ascending order of unit price.
 3. Write a query that displays the customer id, company name, contact name and city of all customers who live in the same city as the customer whose company name contains the word 'para'.
 4. Display the order id, order date, required date, employee name (first/last combination) of a customer whose contact person is 'Antonio Moreno'.
