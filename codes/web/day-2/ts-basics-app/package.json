@@ -1,0 +1,12 @@
+{
+  "name": "ts-basics-app",
+  "version": "1.0.0",
+  "description": "simple application created using ts",
+  "main": "index.js",
+  "scripts": {},
+  "author": "joydip",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.5.5"
+  }
+}
