@@ -1,0 +1,94 @@
+app about displaying product records
+1. create a models folder
+	a. create a class Product, with following attributes
+		- id, price, name, description (string), imagePath (string)
+2. create a repository folder
+	a. add a file named 'products.ts'
+	b. create an arrary to store sample Product class objects and export the sam
+3. create a folder by the name 'products' inside the 'app' foler
+4. create a sub-folder by the name 'product-list'
+5. create a component, named ProductListComponent [product-list.component.ts, product-list.component.html, product-list.component.css etc.] in the 'product-list' folder
+	a. fetch the product array from repository
+	b. display the products using a table in the design
+	c. register the component with a new child module
+		i. create a module file products.module.ts, directly under 'products' folder [NOT in  the sub-folder 'product-list']
+		ii. create a module class ProductsModule
+		iii. register ProductListComponent here
+
+		iv. make the ProductListComponent exportable
+
+4. in App component:
+	a. import ProductsModule in the app.module.ts
+	b. use (nest) the product list component in the app commponent design
+
+5. Add a text box at the top of the table in ProductList component design
+	this text box will be used to filter the products in the table by the product name
+	ex: if you enter a letter 'a' or partial text 'ab', then only the products containing the letter a or the partial text ab, should be displayed in the table
+
+6. create a pipe for the abive purpose, register the pipe in appropriate module and use the pipe in the product list component deisgn
+
+7. create a service with method to return all product records from the repository and register in appropriate module
+8. use the service in product list component code to fetch data from repository 
+9. use Dependeny injection for the object of service class
+
+
+[
+    {
+        "productId": 1,
+        "productName": "Leaf Rake",
+        "productCode": "GDN-0011",
+        "releaseDate": "March 19, 2016",
+        "description": "Leaf rake with 48-inch wooden handle.",
+        "price": 19.95,
+        "starRating": 4,
+        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+    },
+    {
+        "productId": 2,
+        "price": "50",
+        "productName": "Garden Cart",
+        "description": "15 gallon capacity rolling garden cart",
+        "productCode": "GDN-0023",
+        "releaseDate": "March 18, 2019",
+        "starRating": "4",
+        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
+    },
+    {
+        "productId": 5,
+        "productName": "Hammer",
+        "productCode": "TBX-0048",
+        "releaseDate": "May 21, 2016",
+        "description": "Curved claw steel hammer",
+        "price": 8.9,
+        "starRating": 2,
+        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
+    },
+    {
+        "productId": 8,
+        "productName": "Saw",
+        "productCode": "TBX-0022",
+        "releaseDate": "May 15, 2016",
+        "description": "15-inch steel blade hand saw",
+        "price": 11.55,
+        "starRating": 3.7,
+        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png"
+    },
+    {
+        "productId": 10,
+        "productName": "Video Game Controller",
+        "productCode": "GMG-0042",
+        "releaseDate": "October 15, 2015",
+        "description": "Standard two-button video game controller",
+        "price": 35.95,
+        "starRating": 4,
+        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
+    }
+]
+
+
+data: products data
+	a. model, represents the type of data to work with
+	b. sample data storage (array of product objects)
+    access from a component
+			   display the in the component design
+	

@@ -1,0 +1,86 @@
+A. create a service (class alnog with reusable methods)
+
+B. register angular service:
+a. component, pipe, directive level => the object of the service is for that component/pipe/directive only
+@Component({ providers:[]})
+@Pipe({ providers:[]})
+@Directive({ providers:[]})
+
+b. child module level => the object of the service is available to every asset of this child module 
+
+@NgModule({ providers:[]})
+class SomeChildModule{}
+
+c. application or root level => the object of the service is available to every asset of the entire application
+
+@NgModule({ providers:[]})
+class AppModule{}
+
+C. ask for dependency injection
+Component => 
+class SomeComponent{
+	constructor(private svcRef:ServiceClassName){
+	}
+
+	public SomeMethod(){
+		this.svcRef.ServiceMethod();
+	}
+}
+
+Piping: transformation, conversion, 
+
+Pipes: helps you to transform data
+example (built-in pipes in angular): lowercase (converts a character from upper to lowercase, uppercase, currency, symbol, async etc. 
+
+data transformation: converting the name in uppercase format
+
+how pipes are used in design?
+data|pipe-name
+example:
+productname|lowercase
+productname|uppercase
+
+for(let i=0;i<productname.length;i++){
+   let char = productname[i]
+   char => lowercase
+}
+
+data|pipe-name:arg1:arg2:arg3.....
+price|currency:'INR'
+
+
+productname|lowercase => is equivalent of calling the transform() method of LowercasePipe class and to that transform() method the productname is passed as first argument
+@Pipe({
+	name:'lowercase'
+})
+//every Pipe class must have transform() method
+export class LowercasePipe{
+	transform(data:any){
+		
+	}
+}
+
+price|currency:'INR' => is equivalent of calling the transform() method of CurrencyPipe class and to that transform() method the price and the currency name (INR) are passed as first argument and second argument
+@Pipe({
+	name:'currency'
+})
+//every Pipe class must have transform() method
+export class CurrencyPipe{
+	transform(data:any, x:string){
+		
+	}
+}
+
+HTML design:
+numbers|evenfilter:arg1:arg2:arg3....
+
+pipe code:
+@Pipe({ name:'evenfilter'})
+export class EvenFilterPipe{
+	transform(numberArray:number[],...args:any[]){
+	}
+}
+
+
+
+

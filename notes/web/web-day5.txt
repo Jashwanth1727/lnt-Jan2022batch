@@ -1,0 +1,54 @@
+1. component interaction
+2. forms and validation
+3. routing
+
+component: metadata of the component + code (class with data/properties) + design (html)
+
+import { Component } from '@angular/core';
+
+//metadata
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+//component class code
+export class AppComponent {
+  parentData: string = 'data from parent (app) component'
+}
+
+//design
+<h4>{{parentData}}</h4>
+
+the property data of the component class (code) is available in the component design (html) of the same component
+
+component interaction: interaction between two components (data flow between two components)
+a. nested component interaction
+b. routed component interaction
+
+built-in angular service: Router, ActivatedRoute, ActivatedRouterSnapshot
+built-in angular directives: router-outlet, routerLink
+built-in classes: Route, Routes
+built-in module: RouterModule
+
+
+ActivatedRoute: represent the current active route
+
+HttpClient: built-in service class, which helps you to perform http requests
+the methods of this class, returns an observable object containing actual response. if the response contain JSON data, convert that to your model data using pipe() method of observable, in the pipe() method pass logic of transformation.
+
+Angular forms:
+a. template-driven forms
+b. reactive forms
+
+validation:
+a. built-in
+b. custom
+
+command to create component without test case files:
+>ng generate component <component-name> --skip-tests
+or
+>ng g c <component-name> --skip-tests
+
+

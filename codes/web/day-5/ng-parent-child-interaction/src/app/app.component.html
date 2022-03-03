@@ -1,0 +1,10 @@
+<h2>App component</h2>
+<br>
+Data From Child:&nbsp;<b *ngIf="childData && childData!='';else alternate"><u><i>{{childData}}</i></u></b>
+<br>
+<app-nested [dataFromParent]="parentData" (emitNestedData)="receiveDataFromChild($event)">
+</app-nested>
+
+<ng-template #alternate>
+    <span style="color: red;">not received data from child yet</span>
+</ng-template>
