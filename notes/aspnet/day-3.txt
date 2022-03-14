@@ -1,0 +1,109 @@
+1. how an web application in asp.net core starts as?
+answer: as console application
+
+2. what is the importance of static CreateDefaultBuilder() method of Host class?
+answer: it creates a IHostBuilder type object without any or with minimum basic configuration/setting
+
+3. what is the importance of ConfigureWebHostDefaults() method of IHostBuilder interface?
+answer: reconfigures the IHotsBuilder and creates instance of type IWebHostBuilder, which finally will host your asp.net core web application
+
+4. what is the importance of ConfigureServices() method in Startup class? when does it get called?
+answer: mainly needed for dependency injection of the services required by the asp.net core web app. Using IServiceCollection interface methods, we can register for any service, that we need depdendency injection of. 
+as for example if you want to create a MVC web application, which requires support for creating objects of controller, calling the actions, procesing view etc., you need a middleware class object. that middleware clas object needs to be dependency injected. That's why we register the service (the middleware class), whose object will be created and depndency injected.
+the middleware classes are known as services. 
+this method gets called when IWebHostBuilder creates/builds an WebHost object
+
+5. what is the importance of Configure() method in Startup class? when does it get called?
+6. what is IServiceCollection interface?
+7. Which interface represents middleware pipeline? 
+answer: IApplicationBuiilder interface (present as an argument to the Configure method
+
+8. Which base class a controller class inherits from?
+answer: Controller
+
+9. Which interface is the base of ViewResult, RedirectResult etc. class?
+answer: IActionResult
+
+10. Which are ways to pass data from Controller to View?
+answer: through ViewBag and ViewDataDictionary, TempData objects as well as using model binding
+
+11. what is the name of the syntax that is used in View files (*.cshtml)?
+answer: Razor (C# and HTML together)
+
+12. What is the importance of IEndpointRouteBuilder interface?
+answer: to configure endpoint routes for your application (namespace: Microsoft.AspNetCore.Routing)
+
+Configuration of web host:
+stage-1: during the creation/build of the web host. ConfigureServices() method gets called during this time and all required middleware/service class instance are created and dependency injected.
+
+stage-2: during the running of the web host. Configure() method gets called. it is used to configure the middlware pipleine (such as, endpoint configuration etc.), by registering the middleware objects that were created in previous stage (stage-1). now, Invoke() method of those middleware objcets will be called to do the tasks (such, authenticate, authorize, create route builder, create routing endpoint builder etc.)
+
+IServiceCollection Methods:
+-----------------------------------------
+1. AddController():
+supports provided: controllers, model binding, authorization, CORS, validations, formatters
+supports NOT provided: TempData, Views, pages, tag helpers etc.
+
+2. AddControllerWithViews():
+supports provided: for controllers, model binding, authorization, CORS, validation, formatters, TempData, Views, tag helpers
+supports NOT provided: page based
+
+creates objects of a middleware classes for all the above services  (supports for creating controller object, calling actions from the controller object, passing argument to the action, process view using viewengine and create pure HTML to be sent as response etc.) and more
+
+3. AddRazorPages():
+supports provided: for controllers, model binding, authorization, validations, TempData, Views, Pages, Tag Helpers
+supports NOT provided: CORS, formatters
+
+
+4. AddMvc():
+
+
+5. AddMvcCore():
+supports NOT provided: TempData, authorization, validation, Views, pages, etc.
+
+
+AddAuthentication() //authenticationmiddleware obj = new authenticationmiddleware();
+AddAuthorization() //authorizationmiddleware obj = new authorizationmiddleware();
+AddFormatterMappings();
+AddViews();
+AddRazorViewEngine();
+AddCacheTagHelper();
+AddCors();
+AddJsonFormatters();
+
+Middleware registration methods:
+----------------------------------
+UseRouting()
+UseEndpoints()
+UseMvc()
+UseMvcWihDeaultRoute()
+
+Model Binding mechanism
+
+class authenticationmiddleware
+{
+   Invoke(){//code for authentication}
+}
+
+obj.Invoke();
+
+Model Binding:
+a. Binding a view wih a specific type of model. If a view in this way is bound to a certain type of model, then the view is known Strongly Typed View
+b. also pass the same type of data from the controller action to that view
+c. when a form data of a view is submitted back to the controller, the model binder creates an object of the model type based on the data and id's of the form input controls, received from the view form
+
+HTTP Protocol methods:
+-------------------------------
+GET, POST, PUT, PATCH, DELETE
+
+http://localhost:9559/Products/AddProduct (GET)
+
+on submit buton click:
+http://localhost:9559/Products/AddProduct (POST - with payload)
+
+
+
+
+
+
+
